@@ -1,3 +1,5 @@
+package ru.yandex.praktikum;
+
 import java.util.Arrays;
 import java.util.Collection;
 

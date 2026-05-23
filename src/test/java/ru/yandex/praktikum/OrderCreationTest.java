@@ -1,18 +1,18 @@
+package ru.yandex.praktikum;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import pageObjects.MainPage;
-import pageObjects.OrderPage;
+import ru.yandex.praktikum.pageobjects.MainPage;
+import ru.yandex.praktikum.pageobjects.OrderPage;
 
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class OrderCreationTest {
-    private WebDriver driver;
+public class OrderCreationTest extends BaseTest {
     private MainPage homePage;
     private OrderPage orderPage;
 
@@ -40,15 +40,13 @@ public class OrderCreationTest {
         this.buttonPosition = buttonPosition;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "{index}: {0} {1}, кнопка: {8}")
     public static Collection<Object[]> testData() {
         return TestDataProvider.getOrderDataWithButtonPosition();
     }
 
     @Before
-    public void setUp() {
-        driver = DriverFactory.getDriver("firefox");
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+    public void setUpPages() {
         homePage = new MainPage(driver);
         orderPage = new OrderPage(driver);
     }
@@ -66,8 +64,4 @@ public class OrderCreationTest {
                 orderPage.isOrderSuccessMessageDisplayed());
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 }

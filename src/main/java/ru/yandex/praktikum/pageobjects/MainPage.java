@@ -1,4 +1,4 @@
-package pageObjects;
+package ru.yandex.praktikum.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,6 +12,7 @@ import java.util.List;
 
 public class MainPage {
     private WebDriver driver;
+    public static final String BASE_URL = "https://qa-scooter.praktikum-services.ru/";
     //Локатор для кнокпи "Заказать" в шапке
     private By topOrderButton = By.className("Button_Button__ra12g");
     //Локатор для второй кнопки "Заказать"

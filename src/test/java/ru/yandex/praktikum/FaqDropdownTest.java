@@ -1,19 +1,19 @@
+package ru.yandex.praktikum;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import pageObjects.MainPage;
+import ru.yandex.praktikum.pageobjects.MainPage;
 
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class FaqDropdownTest {
-    private WebDriver driver;
-    private MainPage homePage;
+public class FaqDropdownTest extends BaseTest{
 
+    private MainPage homePage;
     private int questionIndex;
     private String expectedAnswer;
 
@@ -22,15 +22,13 @@ public class FaqDropdownTest {
             this.expectedAnswer = expectedAnswer;
         }
 
-        @Parameterized.Parameters
+        @Parameterized.Parameters(name = "{index}: Вопрос {0}")
         public static Collection<Object[]> testData() {
             return TestDataProvider.getFaqData();
         }
 
         @Before
-        public void setUp() {
-            driver = DriverFactory.getDriver("firefox");
-            driver.get("https://qa-scooter.praktikum-services.ru/");
+        public void setUpPages() {
             homePage = new MainPage(driver);
         }
 
@@ -41,8 +39,4 @@ public class FaqDropdownTest {
                     expectedAnswer, actualAnswer);
         }
 
-        @After
-        public void tearDown() {
-            driver.quit();
-        }
     }

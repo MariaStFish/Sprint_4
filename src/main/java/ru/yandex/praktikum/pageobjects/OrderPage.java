@@ -1,4 +1,4 @@
-package pageObjects;
+package ru.yandex.praktikum.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +11,7 @@ import java.time.Duration;
 public class OrderPage {
     private WebDriver driver;
     //Первая форма
-    private By nameField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/input");
+    private By nameField = By.xpath("//input[@placeholder='* Имя']");
     private By surnameField = By.xpath("//input[@placeholder='* Фамилия']");
     private By addressField = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
     private By metroField = By.xpath("//input[@placeholder='* Станция метро']");
@@ -19,7 +19,7 @@ public class OrderPage {
     private By nextButton = By.xpath("//button[text()='Далее']");
 
     // Вторая форма
-    private By dateField = By.xpath("//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/input");
+    private By dateField = By.xpath("//input[@placeholder='* Когда привезти самокат']");
     private By rentalPeriodField = By.className("Dropdown-control");
     private By blackCheckbox = By.xpath("//label[text()='чёрный жемчуг']/input");
     private By greyCheckbox = By.xpath("//label[text()='серая безысходность']/input");
